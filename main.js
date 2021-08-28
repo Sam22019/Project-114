@@ -1,5 +1,8 @@
+noseX = 0;
+noseY = 0;
+
 function preload() {
-   // img = loadImage('https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fflower-opening&psig=AOvVaw0c4OkGFdKIPOPCEjM_lsVm&ust=1629814304617000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJD848epx_ICFQAAAAAdAAAAABAJ');
+    clown_nose = loadImage('https://i.postimg.cc/PxFvYgkv/l1.png');
 }
 
 function setup() {
@@ -19,14 +22,18 @@ function modelLoaded() {
 
 function gotPoses(results) {
     if(results.length > 0) {
-        console.log(results); 
-        console.log("nose x =" + results[0].pose.nose.x)
-        console.log("nose y =" + results[0].pose.nose.y)
+        console.log(results);
+        noseX = results[0].pose.nose.x;
+        noseY = results[0].pose.nose.y; 
+        console.log("nose x =" + noseX);
+        console.log("nose y =" + noseY);
+
     }
 }
 
 function draw() {
     image(video,0,0,400,300);
+    image(clown_nose, noseX-20, noseY+10, 50, 35);
 }
 
 function take_snapshot() {
